@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Main.css";
 import userpic from "../../assets/userpic1.jpg";
 import { FaRegCompass } from "react-icons/fa6";
@@ -8,8 +8,11 @@ import { FaCode } from "react-icons/fa6";
 import { GrGallery } from "react-icons/gr";
 import { FaMicrophone } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
+import { Context } from "../../context/Context";
 
 const Main = () => {
+
+  const {onSent, recentPrompt, showResult,loading, resultData, setInput, input} = useContext(Context)
   return (
     <>
       <div className="main">
@@ -49,11 +52,11 @@ const Main = () => {
 
           <div className="main-bottom">
             <div className="search-box">
-              <input type="text" placeholder="Enter a prompt here" />
+              <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder="Enter a prompt here" />
               <div>
                 <GrGallery className="search-box-icon"/>
                 <FaMicrophone className="search-box-icon"/>
-                <FiSend className="search-box-icon"/>
+                <FiSend onClick={() => onSent()} className="search-box-icon"/>
               </div>
             </div>
             <p className="bottom-info">Gemini clone may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini clone Apps</p>
