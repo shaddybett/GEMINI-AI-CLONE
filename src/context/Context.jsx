@@ -10,8 +10,16 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false); // will hide the default home page that has the greeting
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
+
   const onSent = async (prompt) => {
-    await runChat(input);
+    setResultData("");
+    setLoading(true);
+    setShowResult(true);
+    setRecentPrompt(input)
+    const response = await runChat(input); //response to be stored in this variable
+    setResultData(response);
+    setLoading(false);
+    setInput("");
   };
 
   const contenxtValue = {
@@ -24,7 +32,7 @@ const ContextProvider = (props) => {
     loading,
     resultData,
     input,
-    setInput
+    setInput,
   };
 
   return (

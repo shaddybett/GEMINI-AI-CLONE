@@ -6,96 +6,6 @@
  * See the getting started guide for more information
  * https://ai.google.dev/gemini-api/docs/get-started/node
  */
-
-// const {
-//   GoogleGenerativeAI,
-//   HarmCategory,
-//   HarmBlockThreshold,
-// } = require("@google/generative-ai");
-
-// // const apiKey = process.env.GEMINI_API_KEY;
-// const apiKey = "AIzaSyBWSx5sHGDMEJGqar4wrj-Il77ec_5eyTE";
-// const genAI = new GoogleGenerativeAI(apiKey);
-
-// const model = genAI.getGenerativeModel({
-//   model: "gemini-1.5-flash",
-// });
-
-// const generationConfig = {
-//   temperature: 1,
-//   topP: 0.95,
-//   topK: 64,
-//   maxOutputTokens: 8192,
-//   responseMimeType: "text/plain",
-// };
-
-// async function run() {
-//   const chatSession = model.startChat({
-//     generationConfig,
-//  // safetySettings: Adjust safety settings
-//  // See https://ai.google.dev/gemini-api/docs/safety-settings
-//     history: [
-//     ],
-//   });
-
-//   const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
-//   console.log(result.response.text());
-// }
-
-// run();
-
-// const {
-//   GoogleGenerativeAI,
-//   HarmCategory,
-//   HarmBlockThreshold,
-// } = require("@google/generative-ai");
-
-// const MODEL_NAME = "gemini-1.0-pro";
-// const API_KEY = "AIzaSyBWSx5sHGDMEJGqar4wrj-Il77ec_5eyTE";
-
-// async function runChat() {
-//   const genAI = new GoogleGenerativeAI(API_KEY);
-//   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-
-//   const generationConfig = {
-//     temperature: 0.9,
-//     topK: 1,
-//     topP: 1,
-//     maxOutputTokens: 2048,
-//   };
-//   const safteySettings = [
-//     {
-//       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-//     },
-//     {
-//       category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-//     },
-//     {
-//       category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-//     },
-//     {
-//       category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-//       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-//     },
-//   ];
-
-//   const chat = model.startChat({
-//     generationConfig,
-//     safetySettings,
-//     history: [],
-//   });
-
-//   const result = await chat.sendMessage("YOUR_USER_INPUT");
-//   const response = result.response;
-//   console.log(response.text());
-// }
-
-// runChat();
-
-
 import {
   GoogleGenerativeAI,
   HarmCategory,
@@ -143,6 +53,7 @@ async function runChat(prompt) {
   const result = await chat.sendMessage(prompt);
   const response = result.response;
   console.log(response.text());
+  return response.text();
 }
 
 export default runChat;
