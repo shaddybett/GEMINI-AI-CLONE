@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./sidebar.css";
+import { Context } from "../../context/Context";
 // import "../../assets"
 import { LuMenu } from "react-icons/lu";
 import { FaPlus, FaRegMessage } from "react-icons/fa6";
@@ -8,6 +9,12 @@ import { MdQuestionMark, MdOutlineMessage } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
+  const { onSent, previousPrompt, setRecentPrompt } = useContext(Context);
+
+  const loadPrompt = async (prompt) => {
+    setRecentPrompt(prompt);
+    await onSent(prompt);
+  };
   return (
     <>
       <div className="sidebar">
@@ -23,10 +30,17 @@ const Sidebar = () => {
           {extended ? (
             <div className="recent">
               <p className="recent-title">Recent</p>
-              <div className="recent-entry">
-                <FaRegMessage className="sidebar-icon" />
-                <p>What is react ...</p>
-              </div>
+              {previousPrompt.map((item, index) => {
+                return (
+                  <div
+                    onClick={() => loadPrompt(item)}
+                    className="recent-entry"
+                  >
+                    <FaRegMessage className="sidebar-icon" />
+                    <p>{item.slice(0, 18)}...</p>
+                  </div>
+                );
+              })}
             </div>
           ) : null}
         </div>
