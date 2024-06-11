@@ -67,14 +67,20 @@ const Main = () => {
             // Displays the results of the ai to the screen
             <div className="result">
               <div className="result-title">
-               <img src={userpic} alt="" />
+                <img src={userpic} alt="" />
                 <p>{recentPrompt}</p>
               </div>
               <div className="result-data">
                 <img src={GeminiIcon} alt="" />
-                <p dangerouslySetInnerHTML={{ __html: resultData }}>
-               
-                </p>
+                {loading ? (
+                  <div className="loader">
+                    <hr />
+                    <hr />
+                    <hr />
+                  </div>
+                ) : (
+                  <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                )}
               </div>
             </div>
           )}
