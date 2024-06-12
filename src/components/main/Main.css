@@ -183,6 +183,35 @@
 
 .result-data p {
     font-size: 17px;
-     font-weight: 300;
-     line-height: 1.6;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+@media (max-width:600px) {
+
+    .main{
+        padding-bottom: 18vh;
+    }
+
+    .main-bottom {
+        margin-top: 30px;
+    }
+
+    .main-bottom input {
+        flex: none;
+        width: 150px;
+    }
+
+    .main-bottom .search-box-icon {
+        width: 20px;
+    }
+
+    .search-box {
+        padding: 0;
+        margin-top: 30px;
+    }
+
+    .search-box div {
+        gap: 5px;
+    }
 }
