@@ -96,7 +96,7 @@ const Main = () => {
               <div>
                 <GrGallery className="search-box-icon" />
                 <FaMicrophone className="search-box-icon" />
-                <FiSend onClick={() => onSent()} className="search-box-icon" />
+               {input?<FiSend onClick={() => onSent()} className="search-box-icon" />: null} 
               </div>
             </div>
             <p className="bottom-info">
