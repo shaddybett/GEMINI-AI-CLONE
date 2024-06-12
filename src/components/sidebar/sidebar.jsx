@@ -9,7 +9,8 @@ import { MdQuestionMark, MdOutlineMessage } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
-  const { onSent, previousPrompt, setRecentPrompt } = useContext(Context);
+  const { onSent, previousPrompt, setRecentPrompt, newChat } =
+    useContext(Context);
 
   const loadPrompt = async (prompt) => {
     setRecentPrompt(prompt);
@@ -23,7 +24,7 @@ const Sidebar = () => {
             onClick={() => setExtended((prev) => !prev)}
             className="menu"
           />{" "}
-          <div className="new-chat">
+          <div onClick ={()=> newChat()}className="new-chat">
             <FaPlus className="sidebar-icon" />
             {extended ? <p>New Chat</p> : null}
           </div>
